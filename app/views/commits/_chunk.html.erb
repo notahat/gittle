@@ -1,11 +1,11 @@
 <div class="chunk">
   <div class="line_numbers">
     ... <br />
-    <% source_line_number = chunk.range_info.source_line_number.to_i %>
+    <% old_line_number = chunk.range_info.old_line_number.to_i %>
     <% for line in chunk.lines -%>
       <% unless line.signifier.to_s == '+' %>
-        <%= source_line_number %>
-        <% source_line_number += 1 %>
+        <%= old_line_number %>
+        <% old_line_number += 1 %>
       <% end %>
       <br />
     <% end %>
@@ -13,11 +13,11 @@
   
   <div class="line_numbers">
     ... <br />
-    <% target_line_number = chunk.range_info.target_line_number.to_i %>
+    <% new_line_number = chunk.range_info.new_line_number.to_i %>
     <% for line in chunk.lines -%>
       <% unless line.signifier.to_s == '-' %>
-        <%= target_line_number %>
-        <% target_line_number += 1 %>
+        <%= new_line_number %>
+        <% new_line_number += 1 %>
       <% end %>
       <br />
     <% end %>
