@@ -1,3 +1,7 @@
+<% @title = "Tree #{@tree.id} in #{@repo.name}" %>
+
+<h1><%= link_to(h(@repo.name), @repo) %></h1>
+
 <ul>
   <% for object in @tree.contents %>
     <% if object.is_a?(Grit::Blob) %>
