@@ -1,0 +1,5 @@
+<%= link_to("Tree", repo_tree_path(@repo, @commit.tree.id)) %>
+
+<pre>
+<%=h @repo.grit_repo.diff(@commit, @commit.parents.first) %>
+</pre>

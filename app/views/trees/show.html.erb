@@ -1,0 +1,9 @@
+<ul>
+  <% for object in @tree.contents %>
+    <% if object.is_a?(Grit::Blob) %>
+      <li><%= link_to(h(object.name), repo_blob_path(@repo, object.id)) %></li>
+    <% elsif object.is_a?(Grit::Tree) %>
+      <li><%= link_to(h(object.name), repo_tree_path(@repo, object.id)) %></li>
+    <% end %>
+  <% end %>
+</ul>

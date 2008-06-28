@@ -1,0 +1,49 @@
+grammar Patch
+  rule patch
+    source_line target_line chunks:chunk+
+  end
+
+  rule source_line
+    '--- ' path lf
+  end
+  
+  rule target_line
+    '+++ ' path lf
+  end
+  
+  rule chunk
+    range_info lines:chunk_line+
+  end
+  
+  rule range_info
+    '@@ -' natural_number (',' natural_number)? ' +' natural_number (',' natural_number)? ' @@' lf
+  end
+  
+  rule chunk_line
+    signifier:(' ' / '+' / '-' / '\\') text:[^\n]* lf
+  end
+  
+  rule path
+    ('\ ' / [^ \n])+ {
+      def to_s
+        text_value.gsub('\ ', ' ')
+      end
+    }
+  end
+  
+  rule natural_number
+    ( [1-9] [0-9]* ) / '0' {
+      def to_i
+        text_value.to_i
+      end
+    }
+  end
+  
+  rule sha
+    [0-9a-f]+
+  end
+  
+  rule lf
+    "\n"
+  end
+end

@@ -1,0 +1,22 @@
+<h1>Listing repos</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Path</th>
+  </tr>
+
+<% for repo in @repos %>
+  <tr>
+    <td><%=h repo.name %></td>
+    <td><%=h repo.path %></td>
+    <td><%= link_to 'Show', repo %></td>
+    <td><%= link_to 'Edit', edit_repo_path(repo) %></td>
+    <td><%= link_to 'Destroy', repo, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New repo', new_repo_path %>

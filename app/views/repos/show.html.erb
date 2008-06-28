@@ -1,0 +1,8 @@
+<ul>
+  <% for commit in @repo.commits %>
+    <li><%= link_to(h(commit.message), repo_commit_path(@repo, commit.id)) %></li>
+  <% end %>
+</ul>
+
+<%= link_to 'Edit', edit_repo_path(@repo) %> |
+<%= link_to 'Back', repos_path %>
