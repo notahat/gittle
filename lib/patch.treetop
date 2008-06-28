@@ -16,7 +16,7 @@ grammar Patch
   end
   
   rule range_info
-    '@@ -' natural_number (',' natural_number)? ' +' natural_number (',' natural_number)? ' @@' lf
+    '@@ -' natural_number (',' natural_number)? ' +' natural_number (',' natural_number)? ' @@' [^\n]* lf
   end
   
   rule chunk_line

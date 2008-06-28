@@ -1,0 +1,5 @@
+<div class="chunk">
+  <% for line in chunk.lines -%>
+    <div class="line <%= class_for_signifier(line.signifier) %>"><%=h line.signifier %><%=h line.text.to_s.chomp %></div>
+  <% end %>
+</div>

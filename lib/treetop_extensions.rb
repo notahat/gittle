@@ -1,4 +1,6 @@
 class Treetop::Runtime::SyntaxNode
+  include Enumerable
+  
   def to_s
     text_value
   end

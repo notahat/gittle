@@ -1,8 +1,14 @@
+require 'patch'
+require 'git_diff'
+
 class CommitsController < ApplicationController
   before_filter :find_repo
   
   def show
     @commit = @repo.commit(params[:id])
+    @raw_diff = @repo.grit_repo.diff(@commit.parents.first, @commit)
+    @parser = GitDiffParser.new
+    @diff = @parser.parse(@raw_diff)
   end
   
   def find_repo

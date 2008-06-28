@@ -1,5 +1,21 @@
 <%= link_to("Tree", repo_tree_path(@repo, @commit.tree.id)) %>
 
+<p><%=h @commit.message %></p>
+
+<style type="text/css" media="screen">
+  .git_patch { background: #eaeaea; border: 1px solid #dedede; margin: 16px 0; }
+    .git_patch .path { font: 12px/16px Monaco; padding: 6px 12px; }
+    .git_patch .chunk { background: #f8f8ff; }
+      .git_patch .chunk .line { white-space: pre; font: 12px/16px Courier; padding: 0 12px; }
+      .git_patch .chunk .line.add { background: #ddffdd; }
+      .git_patch .chunk .line.delete { background: #ffdddd; }
+</style>
+
+<% if @diff %>
+  <%= render :partial => 'git_patch', :collection => @diff.git_patches %>
+<% else %>
 <pre>
-<%=h @repo.grit_repo.diff(@commit, @commit.parents.first) %>
+<%=h @repo.grit_repo.diff(@commit.parents.first, @commit) %>
 </pre>
+<% end %>
+

@@ -1,0 +1,4 @@
+<div class="git_patch">
+  <div class="path"><%=h git_patch.diff_line.source_path %></div>
+  <%= render :partial => 'chunk', :collection => git_patch.patch.chunks %>
+</div>

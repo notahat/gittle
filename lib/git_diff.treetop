@@ -1,5 +1,3 @@
-# require 'patch'
-
 grammar GitDiff
   include Patch
   

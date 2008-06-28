@@ -4,6 +4,8 @@ ActionController::Routing::Routes.draw do |map|
     repo.resources :blobs
     repo.resources :trees
   end
+  
+  map.root :repos
 
   # The priority is based upon order of creation: first created -> highest priority.
 
