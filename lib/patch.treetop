@@ -20,7 +20,19 @@ grammar Patch
   end
   
   rule chunk_line
-    signifier:(' ' / '+' / '-' / '\\') text:[^\n]* lf
+    signifier:(' ' / '+' / '-' / '\\') text:[^\n]* lf {
+      def add?
+        signifier.to_s == '+'
+      end
+      
+      def delete?
+        signifier.to_s == '-'
+      end
+      
+      def note?
+        signifier.to_s == '\\'
+      end
+    }
   end
   
   rule path

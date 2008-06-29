@@ -13,8 +13,10 @@
 <% if @diff %>
   <%= render :partial => 'git_patch', :collection => @diff.git_patches %>
 <% else %>
-<pre>
-<%=h @repo.grit_repo.diff(@commit.parents.first, @commit) %>
-</pre>
+  <p>Couldn't parse diff output; the raw diff follows:</p>
+  
+  <%= listing(@raw_diff) %>
+
+  <p><%=h @parser.failure_reason %></p>
 <% end %>
 

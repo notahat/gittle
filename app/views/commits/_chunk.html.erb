@@ -3,7 +3,7 @@
     ... <br />
     <% old_line_number = chunk.range_info.old_line_number.to_i %>
     <% for line in chunk.lines -%>
-      <% unless ['+', '\\'].include?(line.signifier.to_s) %>
+      <% unless line.add? || line.note? %>
         <%= old_line_number %>
         <% old_line_number += 1 %>
       <% end %>
@@ -15,7 +15,7 @@
     ... <br />
     <% new_line_number = chunk.range_info.new_line_number.to_i %>
     <% for line in chunk.lines -%>
-      <% unless ['-', '\\'].include?(line.signifier.to_s) %>
+      <% unless line.delete? || line.note? %>
         <%= new_line_number %>
         <% new_line_number += 1 %>
       <% end %>
