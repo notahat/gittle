@@ -9,7 +9,7 @@ class Repo < ActiveRecord::Base
   end
   
   def commits
-    grit_repo.commits
+    grit_repo.commits('master', 50)
   end
   
   def commit(sha)

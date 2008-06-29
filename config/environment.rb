@@ -50,7 +50,7 @@ Rails::Initializer.run do |config|
   # Make sure the secret is at least 30 characters and all random, 
   # no regular words or you'll be exposed to dictionary attacks.
   config.action_controller.session = {
-    :session_key => '_gitview_session',
+    :session_key => '_gittle_session',
     :secret      => 'f6193cb80c845391af80142421fa1ad6ea70baffbf7f98a5d1a3b1082b77b9022fc1113241601d96fa24718444a523c66e08d15838d2d61ff13238adda130792'
   }
 

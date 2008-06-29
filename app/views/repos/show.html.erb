@@ -2,8 +2,18 @@
 
 <h1><%=h @repo.name %></h1>
 
-<ul>
-  <% for commit in @repo.commits %>
-    <li><%= link_to(h(commit.message), repo_commit_path(@repo, commit.id)) %></li>
-  <% end %>
-</ul>
+<style type="text/css" media="screen">
+  .commit { background: #eaf2f5; padding: 0 16px; border: 1px solid #bedce7; margin: 16px 0; }
+</style>
+
+<% for commit in @repo.grit_repo.commits('master', 50) %>
+  <div class="commit">
+    <p><%=h commit.message %></p>
+
+    <%= link_to(h(commit.id), repo_commit_path(@repo, commit.id)) %>
+    
+    <p><%=h commit.author.name %> &lt;<%=h commit.author.email %>&gt;</p>
+
+    <p><%= time_ago_in_words(commit.authored_date) %> ago</p>
+  </div>
+<% end %>
