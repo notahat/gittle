@@ -1,3 +1,5 @@
 = Gittle
 
 Gittle is a Git repository browser written in Rails.
+
+Be warned: this is a proof-of-concept, and is a long way from being ready for production use.
