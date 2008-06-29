@@ -1,7 +1,7 @@
 <div class="chunk">
   <div class="line_numbers">
     ... <br />
-    <% old_line_number = chunk.range_info.old_line_number.to_i %>
+    <% old_line_number = chunk.old_line_number %>
     <% for line in chunk.lines -%>
       <% unless line.add? || line.note? %>
         <%= old_line_number %>
@@ -13,7 +13,7 @@
   
   <div class="line_numbers">
     ... <br />
-    <% new_line_number = chunk.range_info.new_line_number.to_i %>
+    <% new_line_number = chunk.new_line_number %>
     <% for line in chunk.lines -%>
       <% unless line.delete? || line.note? %>
         <%= new_line_number %>
@@ -25,6 +25,6 @@
   
   <div class="line"> </div>
   <% for line in chunk.lines -%>
-    <div class="line <%= class_for_signifier(line.signifier) %>"><%=h line.signifier %><%=h line.text.to_s.chomp %></div>
+    <div class="line <%= class_for_diff_line(line) %>"><%=h line.signifier %><%=h line.text %></div>
   <% end %>
 </div>

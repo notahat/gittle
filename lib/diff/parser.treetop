@@ -1,0 +1,34 @@
+grammar Diff
+  include Patch
+
+  rule diff
+    git_patch+ <Diff>
+  end
+
+  rule git_patch
+    diff_line extended_header_line* patch <GitPatch>
+  end
+
+  rule diff_line
+    'diff --git ' source_path:path ' ' target_path:path lf
+  end
+
+  rule extended_header_line
+    ('old mode ' mode lf) /
+    ('new mode ' mode lf) /
+    ('deleted file mode ' mode lf) /
+    ('new file mode ' mode lf) /
+    ('copy from ' path lf) /
+    ('copy to ' path lf) /
+    ('rename from ' path lf) /
+    ('rename to ' path lf) /
+    ('similarity index ' natural_number lf) /
+    ('dissimilarity index ' natural_number lf) /
+    ('index ' sha '..' sha (' ' mode)? lf)
+  end
+
+  rule mode
+    [0-9]+
+  end
+
+end

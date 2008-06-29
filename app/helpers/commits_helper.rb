@@ -1,7 +1,7 @@
 module CommitsHelper
 
-  def class_for_signifier(signifier)
-    case signifier.to_s
+  def class_for_diff_line(line)
+    case line.signifier
       when '+'
         'add'
       when '-'

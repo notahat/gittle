@@ -11,7 +11,7 @@
 <p><%= time_ago_in_words(@commit.authored_date) %> ago</p>
 
 <% if @diff %>
-  <%= render :partial => 'git_patch', :collection => @diff.git_patches %>
+  <%= render :partial => 'patch', :collection => @diff.patches %>
 <% else %>
   <p>Couldn't parse diff output; the raw diff follows:</p>
   
